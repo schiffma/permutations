@@ -13,4 +13,4 @@ CBA</br>
 
 Currently N <= 10 is supported, input with string length > 10 will be ignored.
 
-The extension was created with Visual Studio Community 2019 and tested with DB Browser for SQLite Version 3.12.2 .
+The extension was created with Visual Studio Community 2019 and tested with DB Browser for SQLite Version 3.12.2 on Windows 10.
