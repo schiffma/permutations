@@ -3,7 +3,6 @@ SET DEST_PATH=C:\Users\schiffma\Documents\GitHub\permutations
 
 SET SQLITE_DIR=C:\Users\schiffma\Documents\GitHub\permutations
 
-
 :: WIN64 SQLITE BUILD PROCEDURE
 
 :: Set path variables
