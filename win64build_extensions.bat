@@ -10,6 +10,3 @@ CD %EXT_DIR%
 cl /MD permutations.c -link -dll -out:permutations_64.dll
 
 pause
-
-
-
