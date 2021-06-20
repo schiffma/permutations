@@ -3,13 +3,13 @@ Permutation table-valued function implemented as SQLite run-time loadable extens
 
 select * from permutations('ABC');
 
-permut
-ABC
-ACB
-BAC
-BCA
-CAB
-CBA
+permut</br>
+ABC</br>
+ACB</br>
+BAC</br>
+BCA</br>
+CAB</br>
+CBA</br>
 
 Currently N <= 10 is supported, input with string length > 10 will be ignored.
 
