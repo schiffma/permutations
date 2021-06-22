@@ -29,7 +29,7 @@ SQLITE_EXTENSION_INIT1
 
 
 
-int faculty(int n)
+int factorial(int n)
 {
   int f = 1;
   for (int c = 1; c <= n; c++)
@@ -227,7 +227,7 @@ static int permutationsFilter(
   if (argc>0 && strlen(sqlite3_value_text(argv[0])) <= 10) {
     pCur->zStr = sqlite3_mprintf("%s", sqlite3_value_text(argv[0]));    
 	pCur->nStr = pCur->zStr ? (int)(strlen(pCur->zStr)) : 0;
-	pCur->nRows = pCur->zStr ? faculty((int)strlen(pCur->zStr)) : 0;
+	pCur->nRows = pCur->zStr ? factorial((int)strlen(pCur->zStr)) : 0;
   } else {
     pCur->zStr = 0;
     pCur->nStr = 0;
