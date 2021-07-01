@@ -230,12 +230,12 @@ static int permutationsFilter(
 ){
   permutations_cursor *pCur = (permutations_cursor *)pVtabCursor;
   sqlite3_free(pCur->zStr);
-  if (argc>0 && strlen(sqlite3_value_text(argv[0])) <= 10) {
+  if (argc>0 && strlen(sqlite3_value_text(argv[0])) > 0 && strlen(sqlite3_value_text(argv[0])) <= 10) {
     pCur->zStr = sqlite3_mprintf("%s", sqlite3_value_text(argv[0]));    
 	pCur->nStr = pCur->zStr ? (int)(strlen(pCur->zStr)) : 0;
 	pCur->nRows = pCur->zStr ? factorial((int)strlen(pCur->zStr)) : 0;
   } else {	  
-    const char *zText = "INPUT1 argument for function PERM(INPUT1) too long, only character length >= 10 supported.\n";
+    const char *zText = "INPUT1 argument for function PERM(INPUT1) too long or not available, input length must be between 1 and 10.\n";
     pCur->base.pVtab->zErrMsg = sqlite3_mprintf(zText);
     return SQLITE_ERROR;	  
   }
