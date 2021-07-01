@@ -18,7 +18,7 @@ CREATE TABLE perm10 AS SELECT * FROM permutations('abcdefghij');
 
 Additional Information:
 
-Currently N <= 10 is supported, input with string length > 10 will be generate a specific error message.
+Currently N <= 10 is supported, input with string length > 10 will generate a specific error message.
 
 The extension was created with Visual Studio Community 2019 and tested with DB Browser for SQLite Version 3.12.2 on Windows 10.
 
