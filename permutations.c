@@ -10,10 +10,15 @@
 **
 *************************************************************************
 **
-** This file implements a table-valued function:
+** This file implements a table-valued permutation function.
 **
-**      select * from permutations('abcd');
-**
+** Examples:
+
+        SELECT * FROM permutations('abcd');
+		
+		DROP TABLE IF EXISTS perm10;
+		CREATE TABLE perm10 AS SELECT * FROM permutations('abcdefghij');
+
 ** The function has a single (non-HIDDEN) column named permut that takes
 ** on all permutations of the string in its argument, including an empty string
 ** and the input string itself.  
@@ -184,11 +189,12 @@ static int permutationsColumn(
   int i                       /* Which column to return */
 ){
   permutations_cursor *pCur = (permutations_cursor*)cur;
-  if (pCur->iRowid > 0 ){
-	 int r  = next_permutation2((int)pCur->nStr, pCur->zStr); 
-
-  } 
-  sqlite3_result_text(ctx, pCur->zStr, pCur->nStr, 0);                      
+  if (i == 0) {  /* only one row to return */
+    if (pCur->iRowid > 0 ){
+	   int r  = next_permutation2((int)pCur->nStr, pCur->zStr); 
+    } 
+    sqlite3_result_text(ctx, pCur->zStr, pCur->nStr, 0);                    
+  }	
   return SQLITE_OK;
 }
 
@@ -228,9 +234,10 @@ static int permutationsFilter(
     pCur->zStr = sqlite3_mprintf("%s", sqlite3_value_text(argv[0]));    
 	pCur->nStr = pCur->zStr ? (int)(strlen(pCur->zStr)) : 0;
 	pCur->nRows = pCur->zStr ? factorial((int)strlen(pCur->zStr)) : 0;
-  } else {
-    pCur->zStr = 0;
-    pCur->nStr = 0;
+  } else {	  
+    const char *zText = "INPUT1 argument for function PERM(INPUT1) too long, only character length >= 10 supported.\n";
+    pCur->base.pVtab->zErrMsg = sqlite3_mprintf(zText);
+    return SQLITE_ERROR;	  
   }
   pCur->iRowid = 0;
   return SQLITE_OK;
