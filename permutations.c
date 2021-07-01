@@ -1,5 +1,5 @@
 /*
-** 2021-06-18   schiffma
+** 2021-07-01   schiffma
 **
 ** The author disclaims copyright to this source code.  In place of
 ** a legal notice, here is a blessing:
@@ -14,10 +14,10 @@
 **
 ** Examples:
 
-        SELECT * FROM permutations('abcd');
-		
-		DROP TABLE IF EXISTS perm10;
-		CREATE TABLE perm10 AS SELECT * FROM permutations('abcdefghij');
+SELECT * FROM permutations('abcd');
+
+DROP TABLE IF EXISTS perm10;
+CREATE TABLE perm10 AS SELECT * FROM permutations('abcdefghij');
 
 ** The function has a single (non-HIDDEN) column named permut that takes
 ** on all permutations of the string in its argument, including an empty string
