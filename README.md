@@ -11,7 +11,7 @@ BCA</br>
 CAB</br>
 CBA</br>
 
-DROP TABLE IF EXISTS perm10;
+DROP TABLE IF EXISTS perm10;<br>
 CREATE TABLE perm10 AS SELECT * FROM permutations('abcdefghij');
 
 Currently N <= 10 is supported, input with string length > 10 will be ignored.
